@@ -1,5 +1,8 @@
-## Remove RNG
+## TODO
+- Sort ideas into TODO that come first.
+1. Remove accuracy
 
+## Remove RNG
 - [x] Remove / Adjust Crits
     - See CalcCritChanceStage
     - Changed Crits so they have to be 2+ to Crit and it'll Crit 100% of the time.
@@ -25,15 +28,41 @@
 - [ ] Either remove secondary effects on moves or make them 100%.
 - General
     - Search battle_util.c and battle_script_commands.c for RandomWeight and RandomUniform
+- If I keep the same-ish world
+    - [ ] Make Feebas reasonably obtainable.
+
+## In response to the removal of RNG
+- Prior low accuracy + high power need to be nurfed in some way.
+    - [ ] Reduce PP of high power moves to 3 or something.
+    - [ ] Remove PP UP
+    - [ ] Restore PP at the start of every battle.
 
 
 ## More use out of Pre-evo Pokemon
 - Manual Evolution like LA
 - More Evolite like items
+    - Eviolite scales with how much of a pre-evo it is.
 
 ## Cool shtuff
-- Re-learn moves in PC or Party
-- Adjust EVs in PC or Party
+- Balance Pokemon
+    - What approach am I going to take to this?
+        - Approaches
+            - Allow for the adjustment of everything.
+                - 
+- Pokemon Management in PC or Party
+    - [ ] Re-learn moves in PC or Party
+        - [Tutorial](https://www.pokecommunity.com/showpost.php?p=10470602)
+        - Allow Move Relearner to Teach Moves that Pre Evolutions Know.
+            - [Tutorial](https://github.com/pret/pokeemerald/wiki/Allow-Move-Relearner-to-Teach-Moves-that-Pre-Evolutions-Know)
+    - [ ] Adjust EVs in PC or Party
+    - [ ] Adjust Ability in PC or Party
+- [ ] Amplify the effects of EVs for a stronger sense of customizability.
+- [ ] Remove IVs
+    - What do I do about Hidden Power?
+        - Remove Hidden Power (probably for the best).
+            - [ ] Add a replacement move that functions identically to Hidden Power except you choose the type.
+                - I don't know how I'd implement this with menus.
+                - Perhaps once they know the move, when you select the Pokemon in the party, there's an option to adjust the type like how field moves are visible.
 - Items to change the whole Pokemon's type (maybe just change the Plates to work on all Pokemon?)
     - Another Item to change their second type.
 - [x] Change default settings to be fast text and set battles
@@ -48,10 +77,112 @@
     - Maybe located in new_game.c
 - [ ] Speed up all attack animations (or make an option to do so)
 - Since I have Frostbite, add a Ice Will-o-wisp move
-    - [ ] Powder Snow
+    - [x] Powder Snow
+- EXP All Option
+- Speed up animations all-around.
+    - Ball shaking
+    - Battle anims
+    - Entering battle
+        [Tutorial](https://www.pokecommunity.com/showpost.php?p=10473117)
+    - Pokemon Evolving skip with A
+    - Faster and Instant text options.
+        - [Tutorial](https://www.pokecommunity.com/showpost.php?p=10400198)
+    - [ ] Speedy Nurse Joy
+        - [Tutorial](https://github.com/pret/pokeemerald/wiki/Speedy-Nurse-Joy)
+- [ ] All battles are double battles
+    - I think the game is made for double battles more and I think the synergies between Pokemon become more exagerated and more interesting.
+    - [ ] Only allow 4 Pokemon to be able to be brought to a battle out of a party of 6 (like VGC).
+- Rogue-like aspects? ( What am I thinking here? )
+    - 
+- In battle status screen.
+    - Displays all effects and how long they'll last.
+        - Stat boosts
+        - Weather
+        - etc
+- [ ] HM Items
+    - Fly from map
+- [ ] Storage in main menu.
+    - [Tutorial](https://www.pokecommunity.com/showpost.php?p=10127351&postcount=47)
+- [ ] Following Pokemon if possible.
+- [ ] Multi-page Options (I'll likely need more Options)
+    - [Tutorial](https://github.com/pret/pokeemerald/wiki/Multipage-Options-Menu)
+- [ ] Colored stats on nature screen (might already be implemented).
+    - [Tutorial](https://github.com/pret/pokeemerald/wiki/Colored-stats-by-nature-in-summary-screen)
+- [ ] DS Style Party Screens.
+    - If I go with all double battles this will look better than the current party screen.
+    - [Tutorial](https://www.pokecommunity.com/showpost.php?p=10218092&postcount=173)
+- [ ] Remove low health beeps.
+    - These can get grading.
+    - [Tutorial](https://www.pokecommunity.com/showpost.php?p=10246778&postcount=194)
+- [ ] IVs and EVs in Summary Screen (if not already included).
+    - I might want to change this later to IV and EV editing as apposed to just viewing.
+    - [Tutorial](https://www.pokecommunity.com/showpost.php?p=10161688&postcount=77)
+- [ ] Show Type Effectiveness In Battle Using Pre Existing Function and Disable in Option Menu
+    - [Tutorial](https://github.com/pret/pokeemerald/wiki/Show-Type-Effectiveness-In-Battle-Using-Pre-Existing--Function-and-Disable-in-Option-Menu)
+- [ ] Add Description Submenu
+    - Seems useful.
+    - [Tutorial](https://github.com/pret/pokeemerald/wiki/Add-Description-Submenu)
+- [ ] If I need the Start Menu to contain more Options
+    - [Tutorial](https://www.pokecommunity.com/showpost.php?p=10540680&postcount=405)
+- [ ] Automatically make the keyboard switch to lowercase after the first character
+    - QOL
+    - [Tutorial](https://github.com/pret/pokeemerald/wiki/Automatically-make-the-keyboard-switch-to-lowercase-after-the-first-character/)
+- [ ] "Move Pokémon" as first PSS option
+    - QOL
+    - [Tutorial](https://www.pokecommunity.com/showpost.php?p=10065761)
+- [ ] Nickname your Pokémon from the party menu
+    - [Tutorial](https://github.com/pret/pokeemerald/wiki/Nickname-your-Pok%C3%A9mon-from-the-party-menu)
+- [ ] Swap party screen slots using Select
+    - QOL
+    - [Tutorial](https://www.pokecommunity.com/showpost.php?p=10420662)
+- [ ] Wrapping Summary Screen
+    - QOL
+    - [Tutorial](https://www.pokecommunity.com/showpost.php?p=10060875&postcount=27)
+- [ ] Show a throbber animation while the game is saving
+    - QOL
+    - [Tutorial](https://github.com/pret/pokeemerald/wiki/Show-a-throbber-animation-while-the-game-is-saving)
+- [ ] Let a Pokémon forget any move they know
+    - [Tutorial](https://www.pokecommunity.com/showpost.php?p=10182839&postcount=119)
+- [ ] Allow forfiting from trainer battles, this results in blacking / whiting out.
+    - QOL
+- [ ] After each gym all Pokemon in the game raise their level to a new cap.
+    - [ ] Remove current exp system.
+- [ ] Battle timer (can't take too long picking your move).
+    - Keeps from overthinking.
+    - Disable-able with Option menu.
+    - 
+
+## Core Ideas
+- [ ] No RNG!
+- [ ] Lean into the competitive nature of Pokemon more.
+
+## Potential Core Ideas
+- [ ] More Balenced (all Pokemon are usable)
+    - Questions
+        - Do I want Legendaries on the same competitive level as regular Pokemon?
+        - Do I adjust the levels of Pokemon evolution to match eachother more with this balance?
+            - Otherwise Pokemon that evolve early like Beedrill (LV 10) will be super powerful early on.
+
+## Gameplay ideas
+- Rouge-like, bug-catching-competition-like Gym challenges?
+    - For a Gym you can bring 2 returning Pokemon.
+        - This encourages changing up team strategy each gym while still maintaining some progression.
+    - You catch the remaining Pokemon during the challenge to fill out your party.
+    - You have access to all the team building tools during the challenge.
+        - Adjusting EVs, Moves, Abilities, Items on the fly.
+- Don't overload the player with trainer battles, especially if I make this the way I want where battles are more time consuming, thought provoking experiences.
+
+## Questions
+- Where do I draw the line with "Lean into the competitive nature of Pokemon"?
 
 ## Other
-
+- Debugging
+    - [Debugging using printf](https://github.com/pret/pokeemerald/wiki/Debugging-using-printf)
+    - [Debugging using gdb (Windows, WSL2, Visual Studio Code, mGBA)](https://github.com/pret/pokeemerald/wiki/Debugging-using-gdb-(Windows,-WSL2,-Visual-Studio-Code-mGBA))
+- [Free Save Data](https://www.pokecommunity.com/showpost.php?p=10168472)
+- [Change Trainer Abilities](https://www.pokecommunity.com/showpost.php?p=10127338)
+- [Improved Editing Trainer Parties](https://www.pokecommunity.com/showpost.php?p=10260418&postcount=200)
+- [UI Help Tool](https://www.pokecommunity.com/showpost.php?p=10441093)
 - Maybe help fix this typo?
     - Pokémon will have the same ability
         - It's nature not ability
