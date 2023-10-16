@@ -71,6 +71,7 @@
 #define GEN_7 4
 #define GEN_8 5
 #define GEN_9 6
+#define CUSTOM 9
 #define GEN_LATEST GEN_9
 
 // General settings

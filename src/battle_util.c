@@ -3766,7 +3766,8 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
             {
                 if (gBattleMoves[gCurrentMove].effect == EFFECT_POPULATION_BOMB && GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_LOADED_DICE)
                 {
-                    gMultiHitCounter = RandomUniform(RNG_LOADED_DICE, 4, 10);
+                    gMultiHitCounter = 10;
+                    // gMultiHitCounter = RandomUniform(RNG_LOADED_DICE, 4, 10);
                 }
                 else
                 {
@@ -9849,11 +9850,12 @@ static inline s32 DoMoveDamageCalcVars(u32 move, u32 battlerAtk, u32 battlerDef,
     DAMAGE_APPLY_MODIFIER(GetWeatherDamageModifier(battlerAtk, move, moveType, holdEffectAtk, holdEffectDef, weather));
     DAMAGE_APPLY_MODIFIER(GetCriticalModifier(isCrit));
     // TODO: Glaive Rush (Gen IX effect)
-    if (randomFactor)
-    {
-        dmg *= 100 - RandomUniform(RNG_DAMAGE_MODIFIER, 0, 15);
-        dmg /= 100;
-    }
+    // Removed damage variation.
+    // if (randomFactor)
+    // {
+    //     dmg *= 100 - RandomUniform(RNG_DAMAGE_MODIFIER, 0, 15);
+    //     dmg /= 100;
+    // }
 
     DAMAGE_APPLY_MODIFIER(GetSameTypeAttackBonusModifier(battlerAtk, moveType, move, abilityAtk));
     DAMAGE_APPLY_MODIFIER(typeEffectivenessModifier);
@@ -11103,11 +11105,18 @@ static void SetRandomMultiHitCounter()
 {
     if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_LOADED_DICE)
     {
-        gMultiHitCounter = RandomUniform(RNG_LOADED_DICE, 4, 5);
+        gMultiHitCounter = 5;
+        // Old
+        // gMultiHitCounter = RandomUniform(RNG_LOADED_DICE, 4, 5);
     }
     else
     {
-#if B_MULTI_HIT_CHANCE >= GEN_5
+#if B_MULTI_HIT_CHANCE == CUSTOM
+        // 3 Hits by default
+        gMultiHitCounter = 3;
+        // 35%: 2 hits, 35%: 3 hits, 15% 4 hits, 15% 5 hits.
+        // gMultiHitCounter = RandomWeighted(RNG_HITS, 0, 0, 7, 7, 3, 3);
+#elif B_MULTI_HIT_CHANCE >= GEN_5
         // 35%: 2 hits, 35%: 3 hits, 15% 4 hits, 15% 5 hits.
         gMultiHitCounter = RandomWeighted(RNG_HITS, 0, 0, 7, 7, 3, 3);
 #else

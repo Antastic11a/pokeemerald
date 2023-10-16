@@ -25,75 +25,75 @@ SINGLE_BATTLE_TEST("Multi hit Moves hit the maximum amount with Skill Link")
     }
 }
 
-SINGLE_BATTLE_TEST("Multi hit Moves hit twice 35 Percent of the time")
-{
-    PASSES_RANDOMLY(35, 100, RNG_HITS);
+// SINGLE_BATTLE_TEST("Multi hit Moves hit twice 35 Percent of the time")
+// {
+//     PASSES_RANDOMLY(35, 100, RNG_HITS);
 
-    GIVEN {
-        PLAYER(SPECIES_WOBBUFFET);
-        OPPONENT(SPECIES_WOBBUFFET);
-    } WHEN {
-        TURN { MOVE(player, MOVE_BULLET_SEED); }
-    } SCENE {
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, player);
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, player);
-        MESSAGE("Hit 2 time(s)!");
-    }
-}
+//     GIVEN {
+//         PLAYER(SPECIES_WOBBUFFET);
+//         OPPONENT(SPECIES_WOBBUFFET);
+//     } WHEN {
+//         TURN { MOVE(player, MOVE_BULLET_SEED); }
+//     } SCENE {
+//         ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, player);
+//         ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, player);
+//         MESSAGE("Hit 2 time(s)!");
+//     }
+// }
 
-SINGLE_BATTLE_TEST("Multi hit Moves hit thrice 35 Percent of the time")
-{
-    PASSES_RANDOMLY(35, 100, RNG_HITS);
+// SINGLE_BATTLE_TEST("Multi hit Moves hit thrice 35 Percent of the time")
+// {
+//     PASSES_RANDOMLY(35, 100, RNG_HITS);
 
-    GIVEN {
-        PLAYER(SPECIES_WOBBUFFET);
-        OPPONENT(SPECIES_WOBBUFFET);
-    } WHEN {
-        TURN { MOVE(player, MOVE_BULLET_SEED); }
-    } SCENE {
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, player);
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, player);
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, player);
-        MESSAGE("Hit 3 time(s)!");
-    }
-}
+//     GIVEN {
+//         PLAYER(SPECIES_WOBBUFFET);
+//         OPPONENT(SPECIES_WOBBUFFET);
+//     } WHEN {
+//         TURN { MOVE(player, MOVE_BULLET_SEED); }
+//     } SCENE {
+//         ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, player);
+//         ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, player);
+//         ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, player);
+//         MESSAGE("Hit 3 time(s)!");
+//     }
+// }
 
-SINGLE_BATTLE_TEST("Multi hit Moves hit four times 35 Percent of the time")
-{
-    PASSES_RANDOMLY(15, 100, RNG_HITS);
+// SINGLE_BATTLE_TEST("Multi hit Moves hit four times 35 Percent of the time")
+// {
+//     PASSES_RANDOMLY(15, 100, RNG_HITS);
 
-    GIVEN {
-        PLAYER(SPECIES_WOBBUFFET);
-        OPPONENT(SPECIES_WOBBUFFET);
-    } WHEN {
-        TURN { MOVE(player, MOVE_BULLET_SEED); }
-    } SCENE {
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, player);
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, player);
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, player);
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, player);
-        MESSAGE("Hit 4 time(s)!");
-    }
-}
+//     GIVEN {
+//         PLAYER(SPECIES_WOBBUFFET);
+//         OPPONENT(SPECIES_WOBBUFFET);
+//     } WHEN {
+//         TURN { MOVE(player, MOVE_BULLET_SEED); }
+//     } SCENE {
+//         ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, player);
+//         ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, player);
+//         ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, player);
+//         ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, player);
+//         MESSAGE("Hit 4 time(s)!");
+//     }
+// }
 
-SINGLE_BATTLE_TEST("Multi hit Moves hit four times 35 Percent of the time")
-{
-    PASSES_RANDOMLY(15, 100, RNG_HITS);
+// SINGLE_BATTLE_TEST("Multi hit Moves hit four times 35 Percent of the time")
+// {
+//     PASSES_RANDOMLY(15, 100, RNG_HITS);
 
-    GIVEN {
-        PLAYER(SPECIES_WOBBUFFET);
-        OPPONENT(SPECIES_WOBBUFFET);
-    } WHEN {
-        TURN { MOVE(player, MOVE_BULLET_SEED); }
-    } SCENE {
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, player);
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, player);
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, player);
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, player);
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, player);
-        MESSAGE("Hit 5 time(s)!");
-    }
-}
+//     GIVEN {
+//         PLAYER(SPECIES_WOBBUFFET);
+//         OPPONENT(SPECIES_WOBBUFFET);
+//     } WHEN {
+//         TURN { MOVE(player, MOVE_BULLET_SEED); }
+//     } SCENE {
+//         ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, player);
+//         ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, player);
+//         ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, player);
+//         ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, player);
+//         ANIMATION(ANIM_TYPE_MOVE, MOVE_BULLET_SEED, player);
+//         MESSAGE("Hit 5 time(s)!");
+//     }
+// }
 
 SINGLE_BATTLE_TEST("Multi hit Moves hit at least four times with Loaded Dice")
 {

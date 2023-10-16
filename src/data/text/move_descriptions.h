@@ -742,7 +742,7 @@ static const u8 sSpiteDescription[] = _(
 
 static const u8 sPowderSnowDescription[] = _(
     "Blasts the foe with a snowy\n"
-    "gust. May cause freezing.");
+    "gust causing frostbite.");
 
 static const u8 sProtectDescription[] = _(
     "Evades attack, but may fail\n"

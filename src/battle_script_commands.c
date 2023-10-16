@@ -1627,127 +1627,130 @@ static bool32 AccuracyCalcHelper(u16 move)
 
 u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u32 defAbility, u32 atkHoldEffect, u32 defHoldEffect)
 {
-    u32 calc, moveAcc;
-    s8 buff, accStage, evasionStage;
-    u8 atkParam = GetBattlerHoldEffectParam(battlerAtk);
-    u8 defParam = GetBattlerHoldEffectParam(battlerDef);
-    u8 atkAlly = BATTLE_PARTNER(battlerAtk);
-    u16 atkAllyAbility = GetBattlerAbility(atkAlly);
-
-    gPotentialItemEffectBattler = battlerDef;
-    accStage = gBattleMons[battlerAtk].statStages[STAT_ACC];
-    evasionStage = gBattleMons[battlerDef].statStages[STAT_EVASION];
-    if (atkAbility == ABILITY_UNAWARE || atkAbility == ABILITY_KEEN_EYE)
-        evasionStage = DEFAULT_STAT_STAGE;
-    if (gBattleMoves[move].ignoresTargetDefenseEvasionStages)
-        evasionStage = DEFAULT_STAT_STAGE;
-    if (defAbility == ABILITY_UNAWARE)
-        accStage = DEFAULT_STAT_STAGE;
-
-    if (gBattleMons[battlerDef].status2 & STATUS2_FORESIGHT || gStatuses3[battlerDef] & STATUS3_MIRACLE_EYED)
-        buff = accStage;
-    else
-        buff = accStage + DEFAULT_STAT_STAGE - evasionStage;
-
-    if (buff < MIN_STAT_STAGE)
-        buff = MIN_STAT_STAGE;
-    if (buff > MAX_STAT_STAGE)
-        buff = MAX_STAT_STAGE;
-
-    moveAcc = gBattleMoves[move].accuracy;
-    // Check Thunder and Hurricane on sunny weather.
-    if (IsBattlerWeatherAffected(battlerDef, B_WEATHER_SUN)
-      && (gBattleMoves[move].effect == EFFECT_THUNDER || gBattleMoves[move].effect == EFFECT_HURRICANE))
-        moveAcc = 50;
-    // Check Wonder Skin.
-    if (defAbility == ABILITY_WONDER_SKIN && IS_MOVE_STATUS(move) && moveAcc > 50)
-        moveAcc = 50;
-
-    calc = gAccuracyStageRatios[buff].dividend * moveAcc;
-    calc /= gAccuracyStageRatios[buff].divisor;
-
-    // Attacker's ability
-    switch (atkAbility)
-    {
-    case ABILITY_COMPOUND_EYES:
-        calc = (calc * 130) / 100; // 1.3 compound eyes boost
-        break;
-    case ABILITY_VICTORY_STAR:
-        calc = (calc * 110) / 100; // 1.1 victory star boost
-        break;
-    case ABILITY_HUSTLE:
-        if (IS_MOVE_PHYSICAL(move))
-            calc = (calc * 80) / 100; // 1.2 hustle loss
-        break;
-    }
-
-    // Target's ability
-    switch (defAbility)
-    {
-    case ABILITY_SAND_VEIL:
-        if (WEATHER_HAS_EFFECT && gBattleWeather & B_WEATHER_SANDSTORM)
-            calc = (calc * 80) / 100; // 1.2 sand veil loss
-        break;
-    case ABILITY_SNOW_CLOAK:
-        if (WEATHER_HAS_EFFECT && (gBattleWeather & (B_WEATHER_HAIL | B_WEATHER_SNOW)))
-            calc = (calc * 80) / 100; // 1.2 snow cloak loss
-        break;
-    case ABILITY_TANGLED_FEET:
-        if (gBattleMons[battlerDef].status2 & STATUS2_CONFUSION)
-            calc = (calc * 50) / 100; // 1.5 tangled feet loss
-        break;
-    }
-
-    // Attacker's ally's ability
-    switch (atkAllyAbility)
-    {
-    case ABILITY_VICTORY_STAR:
-        if (IsBattlerAlive(atkAlly))
-            calc = (calc * 110) / 100; // 1.1 ally's victory star boost
-        break;
-    }
-
-    // Attacker's hold effect
-    switch (atkHoldEffect)
-    {
-    case HOLD_EFFECT_WIDE_LENS:
-        calc = (calc * (100 + atkParam)) / 100;
-        break;
-    case HOLD_EFFECT_ZOOM_LENS:
-        if (GetBattlerTurnOrderNum(battlerAtk) > GetBattlerTurnOrderNum(battlerDef))
-            calc = (calc * (100 + atkParam)) / 100;
-        break;
-    }
-
-    // Target's hold effect
-    switch (defHoldEffect)
-    {
-    case HOLD_EFFECT_EVASION_UP:
-        calc = (calc * (100 - defParam)) / 100;
-        break;
-    }
-
-    if (gProtectStructs[battlerAtk].usedMicleBerry)
-    {
-        gProtectStructs[battlerAtk].usedMicleBerry = FALSE;
-        if (atkAbility == ABILITY_RIPEN)
-            calc = (calc * 140) / 100;  // ripen gives 40% acc boost
-        else
-            calc = (calc * 120) / 100;  // 20% acc boost
-    }
-
-    if (gFieldStatuses & STATUS_FIELD_GRAVITY)
-        calc = (calc * 5) / 3; // 1.66 Gravity acc boost
-
-#if B_AFFECTION_MECHANICS == TRUE
-    // With high affection/friendship there's a chance to evade a move by substracting 10% of its accuracy.
-    // I can't find exact information about that chance, so I'm just gonna write it as a 20% chance for now.
-    if (GetBattlerFriendshipScore(battlerDef) >= FRIENDSHIP_150_TO_199 && (Random() % 100) <= 20)
-        calc = (calc * 90) / 100;
-#endif
-
-    return calc;
+    // Everything 100% accuracy.
+    return 100;
 }
+//     u32 calc, moveAcc;
+//     s8 buff, accStage, evasionStage;
+//     u8 atkParam = GetBattlerHoldEffectParam(battlerAtk);
+//     u8 defParam = GetBattlerHoldEffectParam(battlerDef);
+//     u8 atkAlly = BATTLE_PARTNER(battlerAtk);
+//     u16 atkAllyAbility = GetBattlerAbility(atkAlly);
+
+//     gPotentialItemEffectBattler = battlerDef;
+//     accStage = gBattleMons[battlerAtk].statStages[STAT_ACC];
+//     evasionStage = gBattleMons[battlerDef].statStages[STAT_EVASION];
+//     if (atkAbility == ABILITY_UNAWARE || atkAbility == ABILITY_KEEN_EYE)
+//         evasionStage = DEFAULT_STAT_STAGE;
+//     if (gBattleMoves[move].ignoresTargetDefenseEvasionStages)
+//         evasionStage = DEFAULT_STAT_STAGE;
+//     if (defAbility == ABILITY_UNAWARE)
+//         accStage = DEFAULT_STAT_STAGE;
+
+//     if (gBattleMons[battlerDef].status2 & STATUS2_FORESIGHT || gStatuses3[battlerDef] & STATUS3_MIRACLE_EYED)
+//         buff = accStage;
+//     else
+//         buff = accStage + DEFAULT_STAT_STAGE - evasionStage;
+
+//     if (buff < MIN_STAT_STAGE)
+//         buff = MIN_STAT_STAGE;
+//     if (buff > MAX_STAT_STAGE)
+//         buff = MAX_STAT_STAGE;
+
+//     moveAcc = gBattleMoves[move].accuracy;
+//     // Check Thunder and Hurricane on sunny weather.
+//     if (IsBattlerWeatherAffected(battlerDef, B_WEATHER_SUN)
+//       && (gBattleMoves[move].effect == EFFECT_THUNDER || gBattleMoves[move].effect == EFFECT_HURRICANE))
+//         moveAcc = 50;
+//     // Check Wonder Skin.
+//     if (defAbility == ABILITY_WONDER_SKIN && IS_MOVE_STATUS(move) && moveAcc > 50)
+//         moveAcc = 50;
+
+//     calc = gAccuracyStageRatios[buff].dividend * moveAcc;
+//     calc /= gAccuracyStageRatios[buff].divisor;
+
+//     // Attacker's ability
+//     switch (atkAbility)
+//     {
+//     case ABILITY_COMPOUND_EYES:
+//         calc = (calc * 130) / 100; // 1.3 compound eyes boost
+//         break;
+//     case ABILITY_VICTORY_STAR:
+//         calc = (calc * 110) / 100; // 1.1 victory star boost
+//         break;
+//     case ABILITY_HUSTLE:
+//         if (IS_MOVE_PHYSICAL(move))
+//             calc = (calc * 80) / 100; // 1.2 hustle loss
+//         break;
+//     }
+
+//     // Target's ability
+//     switch (defAbility)
+//     {
+//     case ABILITY_SAND_VEIL:
+//         if (WEATHER_HAS_EFFECT && gBattleWeather & B_WEATHER_SANDSTORM)
+//             calc = (calc * 80) / 100; // 1.2 sand veil loss
+//         break;
+//     case ABILITY_SNOW_CLOAK:
+//         if (WEATHER_HAS_EFFECT && (gBattleWeather & (B_WEATHER_HAIL | B_WEATHER_SNOW)))
+//             calc = (calc * 80) / 100; // 1.2 snow cloak loss
+//         break;
+//     case ABILITY_TANGLED_FEET:
+//         if (gBattleMons[battlerDef].status2 & STATUS2_CONFUSION)
+//             calc = (calc * 50) / 100; // 1.5 tangled feet loss
+//         break;
+//     }
+
+//     // Attacker's ally's ability
+//     switch (atkAllyAbility)
+//     {
+//     case ABILITY_VICTORY_STAR:
+//         if (IsBattlerAlive(atkAlly))
+//             calc = (calc * 110) / 100; // 1.1 ally's victory star boost
+//         break;
+//     }
+
+//     // Attacker's hold effect
+//     switch (atkHoldEffect)
+//     {
+//     case HOLD_EFFECT_WIDE_LENS:
+//         calc = (calc * (100 + atkParam)) / 100;
+//         break;
+//     case HOLD_EFFECT_ZOOM_LENS:
+//         if (GetBattlerTurnOrderNum(battlerAtk) > GetBattlerTurnOrderNum(battlerDef))
+//             calc = (calc * (100 + atkParam)) / 100;
+//         break;
+//     }
+
+//     // Target's hold effect
+//     switch (defHoldEffect)
+//     {
+//     case HOLD_EFFECT_EVASION_UP:
+//         calc = (calc * (100 - defParam)) / 100;
+//         break;
+//     }
+
+//     if (gProtectStructs[battlerAtk].usedMicleBerry)
+//     {
+//         gProtectStructs[battlerAtk].usedMicleBerry = FALSE;
+//         if (atkAbility == ABILITY_RIPEN)
+//             calc = (calc * 140) / 100;  // ripen gives 40% acc boost
+//         else
+//             calc = (calc * 120) / 100;  // 20% acc boost
+//     }
+
+//     if (gFieldStatuses & STATUS_FIELD_GRAVITY)
+//         calc = (calc * 5) / 3; // 1.66 Gravity acc boost
+
+// #if B_AFFECTION_MECHANICS == TRUE
+//     // With high affection/friendship there's a chance to evade a move by substracting 10% of its accuracy.
+//     // I can't find exact information about that chance, so I'm just gonna write it as a 20% chance for now.
+//     if (GetBattlerFriendshipScore(battlerDef) >= FRIENDSHIP_150_TO_199 && (Random() % 100) <= 20)
+//         calc = (calc * 90) / 100;
+// #endif
+
+//     return calc;
+// }
 
 static void Cmd_accuracycheck(void)
 {
@@ -1979,7 +1982,13 @@ static void Cmd_critcalc(void)
     else if (critChance == -2)
         gIsCriticalHit = TRUE;
     else
-        gIsCriticalHit = RandomWeighted(RNG_CRITICAL_HIT, sCriticalHitChance[critChance] - 1, 1);
+        // If crit chance is less than 2, then no crit, if more than or equal to 2, then crit.
+        if (critChance < 2)
+            gIsCriticalHit = FALSE;
+        else
+            gIsCriticalHit = TRUE;
+        // Old
+        // gIsCriticalHit = RandomWeighted(RNG_CRITICAL_HIT, sCriticalHitChance[critChance] - 1, 1);
 
     // Counter for EVO_CRITICAL_HITS.
     partySlot = gBattlerPartyIndexes[gBattlerAttacker];
