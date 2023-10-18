@@ -1,6 +1,6 @@
 ## TODO
 - Sort ideas into TODO that come first.
-1. Remove accuracy
+1. Remove RNG
 
 ## Remove RNG
 - [x] Remove / Adjust Crits
@@ -11,7 +11,7 @@
     - Loaded Dice always hits 5 times.
     - Multi-hits default to 3.
 - Accuracy
-    - [x] Change the formula to ignore any accuracy changes3
+    - [x] Change the formula to ignore accuracy checks.
     - [ ] Change evasion to effect physical and special defense at half the rate of a normal defense boost.
 - Status effects
     - [ ] Paralysis
@@ -25,6 +25,10 @@
                 - The Pokémon receives increased damage from attacks
                 - (Unlike LA) Speed drop stays, every third turn on switch in, the target can't move.
                 - Drowsiness can be removed when the opponent or user uses the moves: Spark, Volt Tackle, Wild Charge
+    - [ ] Confusion
+        - Options / Ideas
+            - Confusion lasts 1 turn consistantly and Confusion always makes the target hit themself.
+            - Confusion lasts 2 turns, every attack misses, moves that don't target still work (like Recover).
 - [ ] Either remove secondary effects on moves or make them 100%.
 - General
     - Search battle_util.c and battle_script_commands.c for RandomWeight and RandomUniform
@@ -36,6 +40,9 @@
     - [ ] Reduce PP of high power moves to 3 or something.
     - [ ] Remove PP UP
     - [ ] Restore PP at the start of every battle.
+- Buff early game low base power moves.
+    - Ideas
+        - Moves like Ember, if they hit the target twice, they trigger a status effect.
 
 
 ## More use out of Pre-evo Pokemon
@@ -49,6 +56,11 @@
         - Approaches
             - Allow for the adjustment of everything.
                 - 
+- Move changes
+    - Hyper Beam and Giga Impact
+        - [ ] When KOing a Pokemon, it doesn't have to recover.
+- Move ideas
+    - Reverse "Stored Power"
 - Pokemon Management in PC or Party
     - [ ] Re-learn moves in PC or Party
         - [Tutorial](https://www.pokecommunity.com/showpost.php?p=10470602)
@@ -153,6 +165,7 @@
 - [x] Changed learnsets to use Snowscape instead of Hail.
 - [x] Change Hail TM to Snowscape
 - [ ] Add another ability to available Pokemon.
+- [ ] Nurf Stealth Rock
 
 ## Core Ideas
 - [ ] No RNG!
@@ -164,6 +177,12 @@
         - Do I want Legendaries on the same competitive level as regular Pokemon?
         - Do I adjust the levels of Pokemon evolution to match eachother more with this balance?
             - Otherwise Pokemon that evolve early like Beedrill (LV 10) will be super powerful early on.
+- Exploration?
+    - This is taking a back seat to No RNG and More Balance but it'd feel wrong to take it away from a Pokemon game.
+    - What does Exploration include?
+        - Exploring the map
+        - Finding new Pokemon
+        - Finding new Items
 
 ## Gameplay ideas
 - Rouge-like, bug-catching-competition-like Gym challenges?
@@ -172,10 +191,29 @@
     - You catch the remaining Pokemon during the challenge to fill out your party.
     - You have access to all the team building tools during the challenge.
         - Adjusting EVs, Moves, Abilities, Items on the fly.
+    - What becomes of Routes with this idea? Everything seems to centralize around gyms (might not be a bad thing).
 - Don't overload the player with trainer battles, especially if I make this the way I want where battles are more time consuming, thought provoking experiences.
+- Other type Pixilate Abilities.
+    - I don't know what Pokemon I'd give this to.
+- After a certain amount of turns (idk, like 20 or something?) a mechanic tries to end the game.
+    - This is to prevent battles from taking too long and getting uninteresting.
+    - Mechanic ideas
+        - Attack buffs start getting piled on.
+        - Damage is applied overtime (like Poison status or Sandstorm (not literaly)).
+- Put Blueprints in the overworld to build items (I'm not too sure about this idea).
+- Slow introduction of mechanics (particularly new mechanics) over the gym challenge.
+    - New mechanics
+- Saved team compositions and individual Pokemon
+    - This might be real tricky, there's a lot to implement with this.
+        - Save data
+            - Store each whole Pokemon.
+        - Stored Pokemon UI
+            - Maybe I could piggyback off the PC UI?
 
 ## Questions
 - Where do I draw the line with "Lean into the competitive nature of Pokemon"?
+- Do I want to balance around the AI or PVP.
+    - I'm leaning towards the AI, I don't think this'll be play PvP often.
 
 ## Other
 - Debugging
