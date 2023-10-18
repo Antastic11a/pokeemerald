@@ -150,7 +150,9 @@
 - [ ] Battle timer (can't take too long picking your move).
     - Keeps from overthinking.
     - Disable-able with Option menu.
-    - 
+- [x] Changed learnsets to use Snowscape instead of Hail.
+- [x] Change Hail TM to Snowscape
+- [ ] Add another ability to available Pokemon.
 
 ## Core Ideas
 - [ ] No RNG!
